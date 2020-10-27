@@ -1,25 +1,23 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 import PropTypes from "prop-types";
-export class Navbar extends React.Component {
-  static defaultProps = {
-    title: "Github Finder",
-  };
+const Navbar = ({ title }) => {
+  return (
+    <nav className="navbar bg-primary">
+      <h1>
+        <FaGithub style={{ marginRight: "20px" }} />
+        {title}
+      </h1>
+    </nav>
+  );
+};
 
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-  };
+Navbar.defaultProps = {
+  title: "Github Finder",
+};
 
-  render() {
-    return (
-      <nav className="navbar bg-primary">
-        <h1>
-          <FaGithub style={{ marginRight: "20px" }} />
-          {this.props.title}
-        </h1>
-      </nav>
-    );
-  }
-}
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default Navbar;

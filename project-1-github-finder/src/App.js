@@ -1,23 +1,19 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./components/layout/Navbar/Navbar";
-import UserItem from "./components/users/UserItem/UserItem";
+import Users from "./components/users/Users/Users";
 class App extends React.Component {
   render() {
     return (
       <div className="App">
         <Navbar title="Github Finder" />
-        <UserItem />
+
+        <div className="container">
+          <Users />
+        </div>
       </div>
     );
   }
 }
 
 export default App;
-
-/*
-API URL:  https://api.github.com/users
-*/
-
-
-// lists and passing state with props 1 min in 
