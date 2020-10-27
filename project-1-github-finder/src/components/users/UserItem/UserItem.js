@@ -22,7 +22,14 @@ class UserItem extends React.Component {
         />
         <h3>{this.state.login}</h3>
         <div>
-          <a href={this.state.html_url} className="btn btn-dark btn-sm my-1">Github Profile</a>
+          <a
+            href={this.state.html_url}
+            className="btn btn-dark btn-sm my-1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Github Profile
+          </a>
         </div>
       </div>
     );
