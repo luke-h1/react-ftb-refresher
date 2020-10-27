@@ -33,4 +33,3 @@ class UserItem extends React.Component {
   }
 }
 export default UserItem;
-// on end of getting started with component state (1 min left)
