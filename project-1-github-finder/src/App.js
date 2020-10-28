@@ -11,9 +11,10 @@ class App extends React.Component {
 
   async componentDidMount() {
     this.setState({ loading: true });
-    const BASE_URL = `https://api.github.com/users`;
+    const BASE_URL = `https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`
     const res = await axios.get(BASE_URL);
     console.log(res.data);
+    console.log(`${BASE_URL}`);
     this.setState({ users: res.data, loading: false });
   }
   render() {
