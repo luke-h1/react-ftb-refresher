@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./components/layout/Navbar/Navbar";
 import Users from "./components/users/Users/Users";
 import axios from "axios";
+import Search from "./components/users/Search/Search";
 class App extends React.Component {
   state = {
     users: [],
@@ -11,7 +12,7 @@ class App extends React.Component {
 
   async componentDidMount() {
     this.setState({ loading: true });
-    const BASE_URL = `https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`
+    const BASE_URL = `https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`;
     const res = await axios.get(BASE_URL);
     console.log(res.data);
     console.log(`${BASE_URL}`);
@@ -22,11 +23,11 @@ class App extends React.Component {
       <div className="App">
         <Navbar title="Github Finder" />
         <div className="container">
+          <Search />
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
       </div>
     );
   }
 }
-// on lesson spinner component and refactoring
 export default App;
