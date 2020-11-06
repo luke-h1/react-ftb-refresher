@@ -3,15 +3,19 @@ import Spinner from "../../layout/Spinner/Spinner";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { FaCheck, FaTimes } from "react-icons/fa";
+import Repos from "../../repos/Repos/Repos";
 export class User extends React.Component {
   componentDidMount() {
     this.props.getUser(this.props.match.params.login);
+    this.props.getUserRepos(this.props.match.params.login);
   }
 
   static propTypes = {
     loading: PropTypes.bool,
     user: PropTypes.object.isRequired,
     getUser: PropTypes.func.isRequired,
+    getUserRepos: PropTypes.func.isRequired,
+    repos: PropTypes.array.isRequired,
   };
 
   render() {
@@ -27,11 +31,10 @@ export class User extends React.Component {
       following,
       public_repos,
       public_gists,
-      organizations_url,
       company,
       hireable,
     } = this.props.user;
-    const { loading } = this.props;
+    const { loading, repos } = this.props;
     if (loading) return <Spinner />;
 
     return (
@@ -95,6 +98,7 @@ export class User extends React.Component {
           </div>
           <div className="badge badge-dark">Public Gists: {public_gists}</div>
         </div>
+        {Repos && <Repos repos={repos} />}
       </>
     );
   }

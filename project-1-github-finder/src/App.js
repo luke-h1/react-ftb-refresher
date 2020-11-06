@@ -14,6 +14,7 @@ class App extends React.Component {
     user: {},
     loading: false,
     alert: null,
+    repos: [],
   };
 
   // async componentDidMount() {
@@ -42,6 +43,14 @@ class App extends React.Component {
     console.log(res.data);
   };
 
+  getUserRepos = async (username) => {
+    this.setState({ loading: true });
+    const REPO_URL = `https://api.github.com/users/${username}/repos?per_page=30&sort=created:asc&client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`;
+    const res = await axios.get(REPO_URL);
+    this.setState({ repos: res.data, loading: false });
+    console.log(res.data);
+  };
+
   clearUsers = () => this.setState({ users: [], loading: false });
 
   setAlert = (msg, type) => {
@@ -52,7 +61,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { loading, users, user, alert } = this.state;
+    const { loading, users, user, alert, repos } = this.state;
     return (
       <BrowserRouter>
         <div className="App">
@@ -79,7 +88,13 @@ class App extends React.Component {
               <Route
                 path="/user/:login"
                 render={(props) => (
-                  <User {...props} getUser={this.getUser} user={user} />
+                  <User
+                    {...props}
+                    getUser={this.getUser}
+                    getUserRepos={this.getUserRepos}
+                    user={user}
+                    repos={repos}
+                  />
                 )}
               />
             </Switch>
