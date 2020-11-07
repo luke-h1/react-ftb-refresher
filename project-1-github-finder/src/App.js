@@ -6,6 +6,7 @@ import Search from "./components/users/Search/Search";
 import Alert from "./components/layout/Alert/Alert";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import About from "./components/pages/About/About";
+import Home from './components/pages/Home/Home';
 import User from "./components/users/User/User";
 import GithubState from "./context/github/GithubState";
 import AlertState from "./context/alert/AlertState";
@@ -23,12 +24,7 @@ const App = () => {
                 <Route
                   exact
                   path="/"
-                  render={(props) => (
-                    <>
-                      <Search />
-                      <Users />
-                    </>
-                  )}
+                  component={Home} 
                 />
                 <Route path="/about" exact component={About} />
                 <Route path="/user/:login" component={User} />
