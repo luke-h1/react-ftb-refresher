@@ -18,6 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "server": "",
     "format": "prettier \"src/**/*.{js,html,scss,jsx}\" --write",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "clean": "rm -rf node_modules && npm i"
