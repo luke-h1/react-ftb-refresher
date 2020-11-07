@@ -10,6 +10,7 @@ import Home from './components/pages/Home/Home';
 import User from "./components/users/User/User";
 import GithubState from "./context/github/GithubState";
 import AlertState from "./context/alert/AlertState";
+import fourOhFour from "./components/pages/fourOhFour/fourOhFour";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
                 />
                 <Route path="/about" exact component={About} />
                 <Route path="/user/:login" component={User} />
+                <Route default component={fourOhFour} /> 
               </Switch>
             </div>
           </div>
