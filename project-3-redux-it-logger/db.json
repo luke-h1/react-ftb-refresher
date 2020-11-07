@@ -18,14 +18,14 @@
       "id": 3,
       "message": "1112 wireless down",
       "attention": true,
-      "tech": "Sara Wilson",
+      "tech": "Bob Bobby",
       "date": "2019-03-03"
     },
     {
       "id": 4,
       "message": "Workstation 026 is up and running",
       "attention": false,
-      "tech": "Sara Wilson",
+      "tech": "Sara Smith",
       "date": "2019-03-03"
     }
   ],
