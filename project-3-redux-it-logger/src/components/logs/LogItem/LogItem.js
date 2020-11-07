@@ -1,12 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
+
 const LogItem = ({ log }) => {
   return (
     <>
       <li className="collection-item">
         <div>
-          <a href="#nothing">{log.message}</a>
+          <a
+            href="#edit-log-modal"
+            className={`modal-trigger ${
+              log.attention ? 'red-text' : 'blue-text'
+            }`}
+          >
+            {log.message}
+          </a>
+          <br />
+          <span className="gray-text">
+            <span className="black-text">ID: {log.id} Last Updated By </span>
+            <span className="black-text">{log.tech}</span> on{' '} {log.date.toLocaleString()}
+          </span>
         </div>
       </li>
     </>
