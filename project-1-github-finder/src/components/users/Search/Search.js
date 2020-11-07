@@ -5,7 +5,7 @@ import AlertContext from "../../../context/alert/alertContext";
 const Search = () => {
   const githubContext = useContext(GithubContext);
   const alertContext = useContext(AlertContext);
-
+  const { searchUsers } = githubContext;
   const { setAlert } = alertContext;
   const [text, setText] = useState("");
 
@@ -16,7 +16,7 @@ const Search = () => {
     if (text === "") {
       setAlert("Enter a valid value", "light");
     } else {
-      githubContext.searchUsers(text);
+      searchUsers(text);
       setText("");
     }
   };
