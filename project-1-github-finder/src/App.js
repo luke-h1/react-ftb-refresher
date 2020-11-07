@@ -16,15 +16,6 @@ const App = () => {
   const [alert, setAlert] = useState(null);
   const [repos, setRepos] = useState([]);
 
-  const searchUsers = async (text) => {
-    setLoading(true);
-    const SEARCH_URL = `https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`;
-    const res = await axios.get(SEARCH_URL);
-    setUsers(res.data.items);
-    setLoading(false);
-    console.log(res.data.items);
-  };
-
   const getUser = async (username) => {
     setLoading(true);
 
