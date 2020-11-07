@@ -10,11 +10,9 @@ import About from "./components/pages/About/About";
 import User from "./components/users/User/User";
 import GithubState from "./context/github/GithubState";
 const App = () => {
-  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
   const [repos, setRepos] = useState([]);
-
 
   const getUserRepos = async (username) => {
     setLoading(true);
@@ -24,7 +22,6 @@ const App = () => {
     setLoading(false);
     console.log(res.data);
   };
-
 
   const showAlert = (msg, type) => {
     setAlert({ msg, type });
@@ -46,9 +43,7 @@ const App = () => {
                 path="/"
                 render={(props) => (
                   <>
-                    <Search
-                      setAlert={showAlert}
-                    />
+                    <Search setAlert={showAlert} />
                     <Users />
                   </>
                 )}
@@ -57,13 +52,7 @@ const App = () => {
               <Route
                 path="/user/:login"
                 render={(props) => (
-                  <User
-                    {...props}
-                    getUser={getUser}
-                    getUserRepos={getUserRepos}
-                    user={user}
-                    repos={repos}
-                  />
+                  <User {...props} getUserRepos={getUserRepos} repos={repos} />
                 )}
               />
             </Switch>

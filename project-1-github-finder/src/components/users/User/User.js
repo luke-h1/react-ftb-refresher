@@ -1,15 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Spinner from "../../layout/Spinner/Spinner";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import Repos from "../../repos/Repos/Repos";
-const User = ({ user, loading, getUser, repos, match, getUserRepos }) => {
+import GithubContext from "../../../context/github/githubContext";
+const User = ({ repos, match, getUserRepos }) => {
+  const githubContext = useContext(GithubContext);
+  const { getUser, loading, user } = githubContext;
+
   useEffect(() => {
     getUser(match.params.login);
     getUserRepos(match.params.login);
     // eslint-disable-next-line
   }, []);
+
   const {
     name,
     avatar_url,
@@ -94,9 +99,6 @@ const User = ({ user, loading, getUser, repos, match, getUserRepos }) => {
 };
 
 User.propTypes = {
-  loading: PropTypes.bool,
-  user: PropTypes.object.isRequired,
-  getUser: PropTypes.func.isRequired,
   getUserRepos: PropTypes.func.isRequired,
   repos: PropTypes.array.isRequired,
 };

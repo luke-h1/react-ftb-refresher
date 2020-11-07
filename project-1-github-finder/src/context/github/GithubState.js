@@ -54,6 +54,7 @@ const GithubState = (props) => {
         repos: state.repos,
         searchUsers,
         clearUsers,
+        getUser,
         // pass in methods here
       }}
     >
