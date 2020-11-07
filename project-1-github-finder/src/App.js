@@ -55,7 +55,6 @@ const App = () => {
     }, 2000);
   };
 
-  // const { loading, users, user, alert, repos } = this.state;
   return (
     <BrowserRouter>
       <div className="App">
@@ -69,10 +68,10 @@ const App = () => {
               render={(props) => (
                 <>
                   <Search
-                    searchUsers={this.searchUsers}
-                    clearUsers={this.clearUsers}
+                    searchUsers={searchUsers}
+                    clearUsers={clearUsers}
                     showClear={users.length > 0 ? true : false}
-                    setAlert={this.setAlert}
+                    setAlert={setAlert}
                   />
                   <Users loading={loading} users={users} />
                 </>
@@ -84,8 +83,8 @@ const App = () => {
               render={(props) => (
                 <User
                   {...props}
-                  getUser={this.getUser}
-                  getUserRepos={this.getUserRepos}
+                  getUser={getUser}
+                  getUserRepos={getUserRepos}
                   user={user}
                   repos={repos}
                 />
