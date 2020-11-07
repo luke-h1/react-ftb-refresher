@@ -4,6 +4,10 @@ const AddLogModal = () => {
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
+
+  const onSubmit = () => {
+    console.log(`${tech}, ${message}`);
+  };
   return (
     <>
       <div id="add-log-modal" className="modal" style={modalStyle}>
@@ -40,6 +44,31 @@ const AddLogModal = () => {
               </select>
             </div>
           </div>
+          <div className="row">
+            <div className="input-field">
+              <p>
+                <label>
+                  <input
+                    type="checkbox"
+                    className="filled-in"
+                    checked={attention}
+                    value={attention}
+                    onChange={(e) => setAttention(!attention)}
+                  />
+                  <span>Needs Attention</span>
+                </label>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="modal-footer">
+          <a
+            href="#!"
+            onClick={onSubmit}
+            className="modal-close waves-effect waves-green btn"
+          >
+            Enter
+          </a>
         </div>
       </div>
     </>
