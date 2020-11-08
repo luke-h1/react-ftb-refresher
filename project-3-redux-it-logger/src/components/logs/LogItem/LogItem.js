@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteLog } from '../../../actions/logActions';
+import { deleteLog, setCurrent } from '../../../actions/logActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
 const LogItem = ({ log, deleteLog, setCurrent }) => {
   const onDelete = () => {
@@ -17,6 +17,7 @@ const LogItem = ({ log, deleteLog, setCurrent }) => {
             className={`modal-trigger ${
               log.attention ? 'red-text' : 'blue-text'
             }`}
+            onClick={() => setCurrent(log)}
           >
             {log.message}
           </a>
@@ -38,6 +39,7 @@ const LogItem = ({ log, deleteLog, setCurrent }) => {
 LogItem.propTypes = {
   log: PropTypes.object.isRequired,
   deleteLog: PropTypes.func.isRequired,
+  setCurrent: PropTypes.func.isRequired,
 };
 
-export default connect(null, { deleteLog })(LogItem);
+export default connect(null, { deleteLog, setCurrent })(LogItem);
