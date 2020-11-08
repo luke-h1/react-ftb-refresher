@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -7,6 +7,14 @@ const EditLogModal = ({ updateLog, current }) => {
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
+
+  useEffect(() => {
+    if (current) {
+      setMessage(current.message);
+      setAttention(current.attention);
+      setTech(current.tech);
+    }
+  }, [current]);
 
   const onSubmit = () => {
     if (message === '' || tech === '') {
@@ -32,9 +40,6 @@ const EditLogModal = ({ updateLog, current }) => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               />
-              <label htmlFor="message" className="active">
-                Log Message
-              </label>
             </div>
           </div>
           <div className="row">
@@ -89,7 +94,6 @@ const EditLogModal = ({ updateLog, current }) => {
 EditLogModal.propTypes = {
   updateLog: PropTypes.func.isRequired,
   current: PropTypes.object.isRequired,
-
 };
 
 const modalStyle = {
