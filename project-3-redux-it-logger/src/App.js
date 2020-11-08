@@ -8,6 +8,8 @@ import AddLogModal from './components/logs/AddLogModal/AddLogModal';
 import EditLogModal from './components/logs/EditLogModal/EditLogModal';
 import AddTechModal from './components/techs/AddTechModal/AddTechModal';
 import TechListModal from './components/techs/TechListModal/TechListModal';
+import { Provider } from 'react-redux';
+import store from './store/store';
 import './App.css';
 const App = () => {
   useEffect(() => {
@@ -15,17 +17,19 @@ const App = () => {
     M.AutoInit();
   }, []);
   return (
-    <>
-      <SearchBar />
-      <div className="container">
-        <AddBtn />
-        <AddLogModal />
-        <EditLogModal />
-        <AddTechModal />
-        <TechListModal />
-        <Logs />
-      </div>
-    </>
+    <Provider store={store}>
+      <>
+        <SearchBar />
+        <div className="container">
+          <AddBtn />
+          <AddLogModal />
+          <EditLogModal />
+          <AddTechModal />
+          <TechListModal />
+          <Logs />
+        </div>
+      </>
+    </Provider>
   );
 };
 export default App;
