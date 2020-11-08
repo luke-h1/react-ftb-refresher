@@ -1,1 +1,0 @@
-On lesson 80: Edit & tech modal components
