@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import TechItem from '../TechItem/TechItem';
+import TechItem from '../TechItem/TechItem';
 
 const TechListModal = () => {
   const [techs, setTechs] = useState([]);
@@ -13,9 +13,9 @@ const TechListModal = () => {
     setLoading(true);
     const res = await fetch('http://localhost:5000/techs');
     const data = await res.json();
-    console.log(data);
     setTechs(data);
     setLoading(false);
+    console.log(techs);
   };
   if (loading) {
     return <h1>Loading....</h1>;
@@ -27,10 +27,9 @@ const TechListModal = () => {
         <div className="modal-content">
           <h4>Technician List</h4>
           <ul className="collection">
-            {!loading &&
-              techs.map((tech) => (
-                <li className="collection-item">{tech.firstName}</li>
-              ))}
+            {techs.map((tech) => (
+              <TechItem key={tech.id} tech={tech} />
+            ))}
           </ul>
         </div>
       </div>
