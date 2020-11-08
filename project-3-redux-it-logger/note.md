@@ -1,0 +1,1 @@
+On lesson section 13 tech state & components 

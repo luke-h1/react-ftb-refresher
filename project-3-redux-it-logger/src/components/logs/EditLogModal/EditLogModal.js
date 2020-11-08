@@ -29,10 +29,9 @@ const EditLogModal = ({ updateLog, current }) => {
       };
       updateLog(updLog);
       M.toast({ html: `Log updated by ${tech}` });
-      // Clear Fields
-      // setMessage('');
-      // setTech('');
-      // setAttention(false);
+      setMessage('');
+      setTech('');
+      setAttention(false);
     }
   };
   return (
