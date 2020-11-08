@@ -9,8 +9,7 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
     getLogs();
     // eslint-disable-next-line
   }, []);
-  logs.map((log) => <LogItem log={log} key={log.id} />);
-
+  // not filling logs state....
   if (loading || logs === null) {
     return <Preloader />;
   }
@@ -21,7 +20,7 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
         <li className="collection-header">
           <h4 className="center">System Logs</h4>
         </li>
-        {!loading || logs.length === null ? (
+        {!loading || logs.length === 0 ? (
           <p className="center">No Logs To Report...</p>
         ) : (
           logs.map((log) => <LogItem log={log} key={log.id} />)
