@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteLog } from '../../../actions/logActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
-const LogItem = ({ log }) => {
+const LogItem = ({ log, deleteLog, setCurrent }) => {
   const onDelete = () => {
     deleteLog(log.id);
     M.toast({ html: 'Log Deleted' });
   };
-
   return (
     <>
       <li className="collection-item">
@@ -26,7 +25,8 @@ const LogItem = ({ log }) => {
             <span className="black-text">ID: {log.id} Last Updated By </span>
             <span className="black-text">{log.tech}</span> on {log.date}
           </span>
-          <a href="#!" className="secondary-content" onClick={onDelete}>
+          <a href="#!" onClick={onDelete} className="secondary-content">
+            {' '}
             <i className="material-icons gray-text">delete</i>
           </a>
         </div>
