@@ -20,11 +20,19 @@ const EditLogModal = ({ updateLog, current }) => {
     if (message === '' || tech === '') {
       M.toast({ html: 'Error: Enter a Message / Tech' });
     } else {
-      console.log(`${tech}, ${message}`);
+      const updLog = {
+        id: current.id,
+        message,
+        attention,
+        tech,
+        date: new Date(),
+      };
+      updateLog(updLog);
+      M.toast({ html: `Log updated by ${tech}` });
       // Clear Fields
-      setMessage('');
-      setTech('');
-      setAttention(false);
+      // setMessage('');
+      // setTech('');
+      // setAttention(false);
     }
   };
   return (
