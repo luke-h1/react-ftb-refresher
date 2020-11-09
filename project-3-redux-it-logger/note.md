@@ -1,1 +1,1 @@
-On lesson section 13 tech state & components 
+On lesson section 13 tech options
