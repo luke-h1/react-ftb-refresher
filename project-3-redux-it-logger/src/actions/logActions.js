@@ -22,7 +22,7 @@ export const getLogs = () => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: LOGS_ERROR,
-      payload: e.response.data,
+      payload: e.response.statusText,
     });
   }
 
@@ -54,7 +54,7 @@ export const addLog = (log) => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: LOGS_ERROR,
-      payload: e.response.data,
+      payload: e.response.statusText,
     });
   }
 };
@@ -135,7 +135,7 @@ export const searchLogs = (text) => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: LOGS_ERROR,
-      payload: e.response.data,
+      payload: e.response.statusText,
     });
   }
 };

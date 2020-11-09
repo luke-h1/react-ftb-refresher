@@ -19,7 +19,7 @@ export const getTechs = () => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: TECHS_ERROR,
-      payload: e.response.data,
+      payload: e.response.statusText,
     });
   }
 };
