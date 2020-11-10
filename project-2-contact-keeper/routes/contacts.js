@@ -1,5 +1,5 @@
 const express = require('express');
-const router = require('express').Router(); 
+const router = require('express').Router();
 
 /* 
 @route    GET    /api/contacts
@@ -10,8 +10,6 @@ router.post('/', (req, res) => {
   res.send('get users contacts');
 });
 
-module.exports = router;
-
 /* 
 @route    POST    /api/contacts
 @desc     Add new contact 
@@ -21,9 +19,6 @@ router.post('/', (req, res) => {
   res.send('Add new contact');
 });
 
-module.exports = router;
-
-
 /* 
 @route    PUT    /api/contacts
 @desc     Update user's contact
@@ -32,9 +27,6 @@ module.exports = router;
 router.put('/:id', (req, res) => {
   res.send('update contact');
 });
-
-module.exports = router;
-
 
 /* 
 @route    DELETE    /api/contacts
