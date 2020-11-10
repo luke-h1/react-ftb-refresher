@@ -1,5 +1,5 @@
 const express = require('express');
-const router = require('express').Router();
+const router = require('express').Router(); 
 
 /* 
 @route    GET    /api/auth
