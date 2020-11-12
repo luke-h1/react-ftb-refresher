@@ -3,6 +3,8 @@ const router = require('express').Router();
 const User = require('../models/User');
 const { check, validationResult } = require('express-validator/check');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 /* 
 @route    POST    /api/users
 @desc     Register a user 
@@ -36,10 +38,26 @@ router.post(
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
       await user.save();
-      res.send('User saved to MongoDB');
+      const payload = {
+        user: {
+          id: user.id,
+        },
+      };
+      jwt.sign(
+        payload,
+        config.get('jwtSecret'),
+        {
+          // expiresIn: 3600
+          expiresIn: 3600000,
+        },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
     } catch (e) {
       console.log(e.message);
-      res.send(500).send('Server Error...')
+      res.send(500).send('Server Error...');
     }
   }
 );
