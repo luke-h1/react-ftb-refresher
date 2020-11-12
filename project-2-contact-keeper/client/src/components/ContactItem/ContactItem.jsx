@@ -6,7 +6,7 @@ import ContactContext from '../context/Contact/contactContext';
 
 const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext);
-  const { deleteContact } = contactContext;
+  const { deleteContact, clearCurrent, setCurrent } = contactContext;
   const { name, id, email, phone, type } = contact;
 
   const capitalize = (str) => {
@@ -15,6 +15,10 @@ const ContactItem = ({ contact }) => {
 
   const onDelete = () => {
     deleteContact(id);
+  };
+
+  const onEdit = () => {
+    setCurrent(contact);
   };
 
   return (
@@ -47,7 +51,9 @@ const ContactItem = ({ contact }) => {
           )}
         </ul>
         <p>
-          <button className="btn btn-dark btn-sm">Edit</button>
+          <button className="btn btn-dark btn-sm" onClick={onEdit}>
+            Edit
+          </button>
           <button
             className="btn btn-danger
            btn-sm"
