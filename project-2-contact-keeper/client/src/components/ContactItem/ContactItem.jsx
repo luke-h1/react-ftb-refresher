@@ -15,6 +15,7 @@ const ContactItem = ({ contact }) => {
 
   const onDelete = () => {
     deleteContact(id);
+    clearCurrent();
   };
 
   const onEdit = () => {
