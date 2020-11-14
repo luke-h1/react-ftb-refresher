@@ -34,5 +34,5 @@ function App() {
     </AuthState>
   );
 }
-
+// on lesson load user and set token
 export default App;
