@@ -31,7 +31,6 @@ const AuthState = (props) => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
-    // @todo - load token into global headers
     try {
       const res = await axios.get('/api/auth');
       dispatch({ type: USER_LOADED, payload: res.data });
@@ -59,7 +58,21 @@ const AuthState = (props) => {
   };
 
   // LOGIN USER
-  const login = () => {};
+  const login = async (formData) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    try {
+      const res = await axios.post('/api/auth', formData, config);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      loadUser();
+    } catch (e) {
+      console.log(e);
+      dispatch({ type: LOGIN_FAIL, payload: e.response.data.msg });
+    }
+  };
 
   // LOGOUT USER (DESTROY TOKEN)
   const logout = () => {};
