@@ -3,12 +3,17 @@ import PropTypes from 'prop-types';
 import { AiTwotoneIdcard } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
+import ContactContext from '../../context/Contact/contactContext';
 import { FcLeave } from 'react-icons/fc';
 const Navbar = ({ title }) => {
+  const contactContext = useContext(ContactContext);
   const authContext = useContext(AuthContext);
   const { isAuthenticated, logout, user } = authContext;
-
-  const onLogout = () => logout();
+  const { clearContacts } = contactContext;
+  const onLogout = () => {
+    logout();
+    clearContacts();
+  };
 
   const authLinks = (
     <>
