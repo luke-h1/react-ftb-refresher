@@ -10,6 +10,12 @@ import Register from './components/auth/Register/Register';
 import Login from './components/auth/Login/Login';
 import AlertState from './components/context/alert/AlertState';
 import Alerts from './components/layout/Alerts/Alerts';
+import setAuthToken from './utils/setAuthToken';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
 function App() {
   return (
     <AuthState>
@@ -34,5 +40,4 @@ function App() {
     </AuthState>
   );
 }
-// on lesson load user and set token
 export default App;

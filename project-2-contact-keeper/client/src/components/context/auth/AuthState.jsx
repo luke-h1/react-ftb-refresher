@@ -13,7 +13,7 @@ import {
   CLEAR_ERRORS,
   SET_ALERT,
 } from '../types';
-
+import setAuthToken from '../../../utils/setAuthToken';
 const AuthState = (props) => {
   const initialState = {
     token: localStorage.getItem('token'),
@@ -27,7 +27,19 @@ const AuthState = (props) => {
   /* ACTIONS */
 
   // LOAD USER
-  const loadUser = () => {};
+  const loadUser = async () => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    // @todo - load token into global headers
+    try {
+      const res = await axios.get('/api/auth');
+      dispatch({ type: USER_LOADED, payload: res.data });
+    } catch (e) {
+      console.log(e);
+      dispatch({ type: AUTH_ERROR });
+    }
+  };
 
   // REGISTER USER
   const register = async (formData) => {
@@ -39,6 +51,7 @@ const AuthState = (props) => {
     try {
       const res = await axios.post('/api/users', formData, config);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+      loadUser();
     } catch (e) {
       console.log(e);
       dispatch({ type: REGISTER_FAIL, payload: e.response.data.msg });
