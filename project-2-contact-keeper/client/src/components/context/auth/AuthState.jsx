@@ -75,7 +75,9 @@ const AuthState = (props) => {
   };
 
   // LOGOUT USER (DESTROY TOKEN)
-  const logout = () => {};
+  const logout = () => {
+    dispatch({ type: LOGOUT });
+  };
 
   // CLEAR ERRORS
   const clearErrors = () => {
