@@ -8,23 +8,28 @@ import ContactState from './components/context/Contact/ContactState';
 import AuthState from './components/context/auth/AuthState';
 import Register from './components/auth/Register/Register';
 import Login from './components/auth/Login/Login';
+import AlertState from './components/context/alert/AlertState';
+import Alerts from './components/layout/Alerts/Alerts';
 function App() {
   return (
     <AuthState>
       <ContactState>
-        <BrowserRouter>
-          <>
-            <Navbar />
-            <div className="container">
-              <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/about" exact component={About} />
-                <Route path="/register" exact component={Register} />
-                <Route path="/Login" exact component={Login} />
-              </Switch>
-            </div>
-          </>
-        </BrowserRouter>
+        <AlertState>
+          <BrowserRouter>
+            <>
+              <Navbar />
+              <div className="container">
+                <Alerts />
+                <Switch>
+                  <Route path="/" exact component={Home} />
+                  <Route path="/about" exact component={About} />
+                  <Route path="/register" exact component={Register} />
+                  <Route path="/Login" exact component={Login} />
+                </Switch>
+              </div>
+            </>
+          </BrowserRouter>
+        </AlertState>
       </ContactState>
     </AuthState>
   );
