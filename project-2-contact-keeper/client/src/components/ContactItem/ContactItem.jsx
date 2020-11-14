@@ -7,14 +7,14 @@ import ContactContext from '../context/Contact/contactContext';
 const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext);
   const { deleteContact, clearCurrent, setCurrent } = contactContext;
-  const { name, id, email, phone, type } = contact;
+  const { name, _id, email, phone, type } = contact;
 
   const capitalize = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
   const onDelete = () => {
-    deleteContact(id);
+    deleteContact(_id);
     clearCurrent();
   };
 
